@@ -132,5 +132,13 @@ set (tom_SRCS
 	)
 add_library(libtommath_static STATIC ${tom_SRCS})
 target_include_directories(libtommath_static PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
+
 add_executable(testprog demo/demo.c)
 target_link_libraries(testprog libtommath_static)
+
+add_executable(timing demo/timing.c)
+target_link_libraries(timing libtommath_static)
+target_compile_definitions(timing PRIVATE TIMER)
+
+add_executable(mtest mtest/mtest.c)
+target_link_libraries(mtest libtommath_static)
